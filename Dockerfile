@@ -18,7 +18,7 @@ RUN pip install --upgrade pillow
 # NOTE: cloning master (might be an unstable HEAD)
 RUN git clone https://github.com/matterport/Mask_RCNN.git $TEMP_MRCNN_DIR
 COPY visualize.py $TEMP_MRCNN_DIR/mrcnn
-
+ADD images $TEMP_MRCNN_DIR/mrcnn/fish-dataset/
 RUN git clone https://github.com/waleedka/coco.git $TEMP_COCO_DIR
 
 RUN cd $TEMP_MRCNN_DIR && \

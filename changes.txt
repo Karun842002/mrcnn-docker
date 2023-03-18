@@ -1,0 +1,18 @@
+cd /tmp/mrcnn
+cp /tmp/maskrcnn/samples/balloon/balloon.py ./fish.py
+
+sed -i -- 's/balloon/fish/g' fish.py
+sed -i -- 's/Balloon/Fish/g' fish.py
+sed -i -- 's/epochs=30/epochs=5/g' fish.py
+
+line 90:
+add classes
+
+line 112 (after json.load line):
+for k,v in annotations.items():
+	annotations[k]["filename"] = k
+
+line 163 (skimage.draw line):
+
+Instead of p['all_points_y'], p['all_points_x']
+Put [p['y'], p['y'], p['y']+p['height'], p['y']+p['height']],[p['x'], p['x']+p['width'], p['x'], p['x']+p['width]] 
